@@ -1,5 +1,6 @@
 import numpy as np
 from tqdm import tqdm
+from heapq import heappush, heappop
 
 def pure_random_split(grid, init_box, n=20, orient="random"):
     """
@@ -9,7 +10,7 @@ def pure_random_split(grid, init_box, n=20, orient="random"):
 
     Tends to leave large parts of the grid un-split, since the more a certain area is split, the more likely it is to that the next split is in that area.
     """
-    if isinstance(init_box, Box):
+    if not isinstance(init_box, list):
         boxes = [init_box]
     else:
         boxes = init_box
@@ -27,7 +28,7 @@ def area_proportioned_split(grid, init_box, n=20, orient="random"):
 
     Chooses to split a box with probability proportionate to its area.
     """
-    if isinstance(init_box, Box):
+    if not isinstance(init_box, list):
         boxes = [init_box]
     else:
         boxes = init_box
@@ -48,7 +49,7 @@ def sq_area_proportioned_split(grid, init_box, n=20, orient="random"):
 
     Chooses to split a box with probability proportionate to its square area.
     """
-    if isinstance(init_box, Box):
+    if not isinstance(init_box, list):
         boxes = [init_box]
     else:
         boxes = init_box
@@ -73,7 +74,7 @@ def always_largest_split(grid, init_box, n=20, orient="random"):
     This method lends itself to an easy heap implementation,
     so it's much, much faster than the other splitting schemes.
     """
-    if isinstance(init_box, Box):
+    if not isinstance(init_box, list):
         boxes = [init_box]
     else:
         boxes = heapify(init_box)
@@ -82,6 +83,6 @@ def always_largest_split(grid, init_box, n=20, orient="random"):
         box = heappop(boxes)
 
         new_boxes = box.rand_split(orient=orient)
-        heappush(boxes, new_boxes[0])
-        heappush(boxes, new_boxes[1])
+        for nb in new_boxes:
+            heappush(boxes, nb)
     return boxes

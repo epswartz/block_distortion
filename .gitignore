@@ -5,3 +5,6 @@
 images
 outputs
 
+# Python
+__pycache__
+glitch_utils/__pycache__

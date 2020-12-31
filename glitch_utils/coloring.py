@@ -1,3 +1,6 @@
+import warnings
+warnings.filters
+
 def randomcolor(eps=.1):
     """
     Randomly chooses an RGB color, rounding each of R, G and B to the nearest <eps>.
@@ -29,7 +32,8 @@ def color_grid_from_image(boxes, grid, image):
     # Process image to 0-1
     image = image / 255
     for b in boxes:
-        grid[b.x:b.x+b.w,b.y:b.y+b.h,0] = image[b.x:b.x+b.w,b.y:b.y+b.h,0].mean()
-        grid[b.x:b.x+b.w,b.y:b.y+b.h,1] = image[b.x:b.x+b.w,b.y:b.y+b.h,1].mean()
-        grid[b.x:b.x+b.w,b.y:b.y+b.h,2] = image[b.x:b.x+b.w,b.y:b.y+b.h,2].mean()
+        if len(image[b.x:b.x+b.w,b.y:b.y+b.h,0]) != 0:
+            grid[b.x:b.x+b.w,b.y:b.y+b.h,0] = image[b.x:b.x+b.w,b.y:b.y+b.h,0].mean()
+            grid[b.x:b.x+b.w,b.y:b.y+b.h,1] = image[b.x:b.x+b.w,b.y:b.y+b.h,1].mean()
+            grid[b.x:b.x+b.w,b.y:b.y+b.h,2] = image[b.x:b.x+b.w,b.y:b.y+b.h,2].mean()
     return grid

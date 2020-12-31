@@ -1,3 +1,5 @@
+from random import random, randint
+
 class Box:
 
     def __init__(self, x, y, w, h, split_orient=0):
@@ -5,8 +7,6 @@ class Box:
         self.y = y
         self.w = w
         self.h = h
-        if (x + w > X_SIZE) or (y + h > Y_SIZE):
-            raise ValueError
 
         # For "alternating" option on we track which orient was used to create box.
         self.split_orient = split_orient
@@ -27,10 +27,11 @@ class Box:
     def area(self):
         return self.w*self.h
 
-    def rand_split(self, orient="random"):
+    def rand_split(self, orient="alternating"):
         """
         Splits the box, returning two new boxes in a tuple.
         """
+
         if orient == "random":
             orientation = randint(0,1)
         elif orient == "alternating":
@@ -43,11 +44,15 @@ class Box:
             raise ValueError("orient must be 'random', 'horizontal', 'vertical', or 'alternating'.")
 
         if orientation == 0: # Vertical cut
-            cut = round(random()*self.h)
+            if self.h == 1:
+                return (self,)
+            cut = max(round(random()*self.h), 1)
             box1 = Box(self.x, self.y, self.w, cut, split_orient=orientation)
             box2 = Box(self.x, self.y+cut, self.w, self.h-cut, split_orient=orientation)
         else: # Horizontal cut
-            cut = round(random()*self.w)
+            if self.w == 1:
+                return (self,)
+            cut = max(round(random()*self.w), 1)
             box1 = Box(self.x, self.y, cut, self.h, split_orient=orientation)
             box2 = Box(self.x+cut, self.y, self.w-cut, self.h, split_orient=orientation)
 
