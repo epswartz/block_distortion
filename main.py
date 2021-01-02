@@ -30,7 +30,7 @@ def animate(
     out: str = typer.Option("./output.gif", "--out", "-o", help="Name of output file (gif)")
 ):
     """
-    From the given image, produce a gif with glitch effects.
+    Produce a gif with glitch effects.
     """
 
     im = imread(image_path)
@@ -48,11 +48,14 @@ def animate(
     write_frames_to_gif(out, images, duration)
 
 @app.command()
-def image(
+def single(
     image_path: str = typer.Argument(..., help="Input file (png, jpg, etc)"),
     splits: int = typer.Option(2000, "--splits", "-s", help="Number of times to split the image"),
     out: str = typer.Option("./output.gif", "--out", "-o", help="Name of output file (gif)")
 ):
+    """
+    Produce a single image with glitch effects.
+    """
     im = imread(image_path)
 
     X_SIZE, Y_SIZE, CHANNELS = im.shape
