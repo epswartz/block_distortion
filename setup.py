@@ -8,13 +8,13 @@ setup(
     author = 'Ethan Swartzentruber',
     author_email = 'eswartzen@gmail.com',
     url = 'https://github.com/epswartz/glitch_effects',
-    download_url = 'https://github.com/user/reponame/archive/v_01.tar.gz',    # TODO
+    download_url='https://github.com/epswartz/glitch_effects/archive/0.0.2.zip',
     keywords = ['glitch', 'effects', 'image', 'image processing', 'vfx'],
     install_requires=[            # I get to this in a second
         'Pillow',
         'numpy',
         'rich',
-        'skimage',
+        'scikit-image',
         'typer'
     ],
     classifiers=[
