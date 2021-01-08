@@ -1,5 +1,4 @@
 import numpy as np
-from tqdm import tqdm
 from heapq import heappush, heappop
 
 def pure_random_split(grid, init_box, n=20, orient="random"):

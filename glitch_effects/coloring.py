@@ -1,5 +1,5 @@
 import warnings
-warnings.filters
+warnings.filterwarnings("ignore") # FIXME The empty slice warnings don't really matter, but this shouldn't be here
 
 def randomcolor(eps=.1):
     """
