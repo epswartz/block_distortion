@@ -2,4 +2,4 @@
 #from coloring import *
 #from utils import *
 #from splitting import *
-#from effects import *
+from .effects import *

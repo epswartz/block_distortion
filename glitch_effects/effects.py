@@ -1,9 +1,9 @@
 import numpy as np
 
-from splitting import *
-from io import *
-from Box import Box
-from coloring import *
+from .splitting import *
+from .utils import *
+from .Box import Box
+from .coloring import *
 
 from rich.progress import track
 from rich.console import Console
@@ -13,8 +13,8 @@ ORIENTATION = "alternating" # I may add this to the options but for now all the 
 # TODO I can just call glitch_image in here.
 def animate_image(
     image: np.ndarray,
-    frames: int,
-    splits: int,
+    frames: int=100,
+    splits: int=2000,
     progress: bool=False
 ):
     """
@@ -48,7 +48,7 @@ def animate_image(
 
 def glitch_image(
     image: np.ndarray,
-    splits: int,
+    splits: int=2000,
     progress: bool=False
 ):
     """
@@ -62,7 +62,7 @@ def glitch_image(
     Returns:
         np.ndarray: (W,H,3) or (W,H,4) np.ndarray representing the glitched image.
     """
-    X_SIZE, Y_SIZE, CHANNELS = im.shape
+    X_SIZE, Y_SIZE, CHANNELS = image.shape
     init_box = Box(0, 0, X_SIZE, Y_SIZE)
 
     if progress:
