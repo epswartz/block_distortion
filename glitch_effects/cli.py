@@ -12,11 +12,11 @@ from rich.console import Console
 
 import typer
 
+from skimage import img_as_ubyte
 from skimage.io import imread, imsave
 from .effects import *
 from .utils import write_frames_to_gif
 
-warnings.filterwarnings("ignore") # FIXME Don't care about lossy conversion
 
 app = typer.Typer()
 
@@ -52,7 +52,7 @@ def single(
     glitched = glitch_image(im, splits)
     console = Console()
     with console.status(f"Writing output to {out}"):
-        imsave(out, glitched)
+        imsave(out, img_as_ubyte(glitched))
 
 # This is the entrypoint target for console_scripts
 def main():
