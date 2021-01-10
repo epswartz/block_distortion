@@ -9,3 +9,7 @@ test
 # Python
 __pycache__
 glitch_utils/__pycache__
+
+# Packaging
+dist
+MANIFEST
