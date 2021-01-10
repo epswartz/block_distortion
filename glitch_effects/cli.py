@@ -13,8 +13,10 @@ from rich.console import Console
 import typer
 
 from skimage.io import imread, imsave
-from effects import *
-from utils import write_frames_to_gif
+from .effects import *
+from .utils import write_frames_to_gif
+
+warnings.filterwarnings("ignore") # FIXME Don't care about lossy conversion
 
 app = typer.Typer()
 
@@ -32,7 +34,6 @@ def animate(
     """
 
     im = imread(image_path)
-    print(splits)
     images = animate_image(im, frames, splits, progress=True)
     write_frames_to_gif(out, images, duration, progress=True)
 
@@ -41,7 +42,7 @@ def animate(
 def single(
     image_path: str = typer.Argument(..., help="Input file (png, jpg, etc)"),
     splits: int = typer.Option(2000, "--splits", "-s", help="Number of times to split the image"),
-    out: str = typer.Option("./output.gif", "--out", "-o", help="Name of output file (gif)")
+    out: str = typer.Option("./output.png", "--out", "-o", help="Name of output file (gif)")
 ):
     """
     Produce a single image with glitch effects.
@@ -49,8 +50,10 @@ def single(
     im = imread(image_path)
 
     glitched = glitch_image(im, splits)
+    console = Console()
     with console.status(f"Writing output to {out}"):
-        imsave(out, grid)
+        imsave(out, glitched)
 
-if __name__ == "__main__":
+# This is the entrypoint target for console_scripts
+def main():
     app()

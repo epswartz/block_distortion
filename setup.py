@@ -1,12 +1,12 @@
 from distutils.core import setup
 
 
-VERSION="0.0.9"
+VERSION="0.1.0"
 
 setup(
     name = 'glitch_effects',
+    version = VERSION,
     packages = ['glitch_effects'],
-    version = VERSION,      # Start with a small number and increase it with every change you make
     license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
     description = 'Apply glitch effects to images, and create animated versions.',
     author = 'Ethan Swartzentruber',
@@ -22,10 +22,13 @@ setup(
         'typer'
     ],
     classifiers=[
-        'Development Status :: 3 - Alpha', # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
+        'Development Status :: 4 - Beta', # "3 - Alpha", "4 - Beta" or "5 - Production/Stable"
         'Intended Audience :: End Users/Desktop',
         'Topic :: Artistic Software',
-        #'License :: OSI Approved :: MIT License',   # Again, pick a license
+        'License :: OSI Approved :: MIT License'
     ],
-    python_requires='>=3.8'
+    python_requires='>=3.6',
+    entry_points = {
+        'console_scripts': ['glitch=glitch_effects.cli:main']
+    }
 )
