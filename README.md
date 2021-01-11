@@ -6,6 +6,8 @@ For example:
 
 ![Demo GIF](./demo.gif)
 
+![Demo Input](./demo_input.jpg)
+
 _Image credit: Braden Tholkes ([Flickr](https://www.flickr.com/photos/tholkesbraden/))._
 
 ## Installation
