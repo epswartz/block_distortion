@@ -76,7 +76,7 @@ write_frames_to_gif("./output.gif", frames, duration=100) # Write to output file
 ```
 
 ### Single:
-```
+```python
 from skimage import img_as_ubyte
 from skimage.io import imread, imsave
 from block_distortion import distort_image
