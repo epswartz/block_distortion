@@ -6,7 +6,7 @@ For example:
 
 ![Demo GIF](./demo.gif)
 
-_Image credit:_
+_Image credit: Braden Tholkes ([Flickr](https://www.flickr.com/photos/tholkesbraden/))._
 
 ## Installation
 `pip install block_distortion` (requires Python >= 3.6)
