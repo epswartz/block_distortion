@@ -30,7 +30,7 @@ def animate(
     out: str = typer.Option("./output.gif", "--out", "-o", help="Name of output file (gif)")
 ):
     """
-    Produce a gif with glitch effects.
+    Produce a gif with distortion effects from an image.
     """
 
     im = imread(image_path)
@@ -45,14 +45,14 @@ def single(
     out: str = typer.Option("./output.png", "--out", "-o", help="Name of output file (gif)")
 ):
     """
-    Produce a single image with glitch effects.
+    Produce a single image with distortion effects.
     """
     im = imread(image_path)
 
-    glitched = glitch_image(im, splits)
+    distorted = distort_image(im, splits)
     console = Console()
     with console.status(f"Writing output to {out}"):
-        imsave(out, img_as_ubyte(glitched))
+        imsave(out, img_as_ubyte(distorted))
 
 # This is the entrypoint target for console_scripts
 def main():

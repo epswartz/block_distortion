@@ -1,5 +1,5 @@
-# glitch_effects
+# block_distortion
 
-A command line tool and Python library for "glitch" effects on images and video.
+A command line tool and Python library for "block distortion" effects on images.
 
-Better README coming after I build the CLI and know what to tell you about how to use it :)
+![]()
