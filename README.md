@@ -66,7 +66,7 @@ Options:
 
 ### Animation:
 
-```
+```python
 from skimage.io import imread
 from block_distortion import animate_image, write_frames_to_gif
 
