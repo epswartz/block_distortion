@@ -13,7 +13,7 @@ The original:
 _Image credit: Braden Tholkes ([Flickr](https://www.flickr.com/photos/tholkesbraden/))._
 
 ## Installation
-`pip install block_distortion` (requires Python >= 3.6)
+`pip install block_distortion` (requires Python >= 3.6 and `pip`)
 
 ## Command Line Usage
 At the moment, there are two commands: `animate` and `single`.
