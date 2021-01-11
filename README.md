@@ -58,9 +58,9 @@ Options:
 
 ```
 
-## Library Usage
+## Library Usage Examples
 
-### Animation
+### Animation:
 
 ```
 from skimage.io import imread
@@ -71,7 +71,7 @@ frames = animate_image(input_image) # Create frames (same options available as o
 write_frames_to_gif("./output.gif", frames, duration=100) # Write to output file
 ```
 
-### Single
+### Single:
 ```
 from skimage import img_as_ubyte
 from skimage.io import imread, imsave
