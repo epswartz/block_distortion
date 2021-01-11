@@ -17,13 +17,15 @@ def write_frames_to_gif(fname: str, frames, duration: int, progress=False):
     duration: Duration of each frame in the gif
     """
 
+    channels = frames[0].shape[0]
     # Convert to PIL
     pil_images = []
     if progress:
         frames = track(frames, "Converting Frames")
     for f in frames:
         pim = Image.fromarray((f*255).astype(np.uint8))
-        pim.info['transparency'] = 255
+        if channels == 4:
+            pim.info['transparency'] = 255
         pil_images.append(pim)
 
     # Write GIF, show status spinner with rich
