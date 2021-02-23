@@ -94,3 +94,5 @@ For the curious, the algorithm goes like this:
 2. Split the largest part of the image (repeat times the number of splits the user specified).
 3. Color the parts with the average color of that area in the original image.
 4. To create GIFs, repeat 1-3 for each frame (you get a different split each time).
+
+The unnoficial step 5 is to annoy you with compression artifacts, since all the pixels are changing at once :)
