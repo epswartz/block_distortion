@@ -90,7 +90,7 @@ imsave("./output.png", img_as_ubyte(distorted)) # Save image
 ## How does it work?
 For the curious, the algorithm goes like this:
 
-1. Split the image into two parts, unformly choosing where to split and whether to split vertically or horizontally.
+1. Split the image into two parts, uniformly choosing where to split and whether to split vertically or horizontally.
 2. Split the largest part of the image (repeat times the number of splits the user specified).
 3. Color the parts with the average color of that area in the original image.
 4. To create GIFs, repeat 1-3 for each frame (you get a different split each time).
